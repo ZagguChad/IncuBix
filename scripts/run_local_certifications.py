@@ -28,7 +28,7 @@ def main() -> int:
     with httpx.Client(base_url="http://127.0.0.1:8000", timeout=30) as client:
         for connector, url, connection in CASES:
             destination = {
-                "name": f"Local certification {connector} {run_id}", "url": url,
+                "name": f"Local certification {connector} {run_id}", "url": f"{url}/{run_id}",
                 "platform_key": connector, "surface": "topic", "category": "local-test",
                 "audience_tags": ["AI"], "connector_key": connector, "connection": connection,
                 "rules": {"self_promo_allowed": True, "link_policy": "allowed", "disclosure_required": False,
