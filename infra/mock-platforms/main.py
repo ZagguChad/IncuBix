@@ -13,12 +13,40 @@ discourse_topics: dict[str, dict] = {}
 devto_articles: dict[str, dict] = {}
 ghost_posts: dict[str, dict] = {}
 partner_posts: dict[str, dict] = {}
+lemmy_posts: dict[str, dict] = {}
 external_ids: dict[str, str] = {}
 
 
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.post("/lemmy/api/v4/post")
+async def lemmy_create(request: Request, authorization: str | None = Header(default=None)):
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(401, "Missing Lemmy authorization")
+    body = await request.json()
+    post_id = str(next(ids))
+    post = {"id": int(post_id), "ap_id": f"http://mock-platforms:9000/lemmy/post/{post_id}", "deleted": False}
+    lemmy_posts[post_id] = {"post": post, "counts": {"upvotes": 7, "comments": 2}}
+    return {"post_view": lemmy_posts[post_id]}
+
+
+@app.get("/lemmy/api/v4/post")
+def lemmy_read(id: int, authorization: str | None = Header(default=None)):
+    if not authorization or str(id) not in lemmy_posts:
+        raise HTTPException(404, "Post not found")
+    return {"post_view": lemmy_posts[str(id)]}
+
+
+@app.delete("/lemmy/api/v4/post")
+async def lemmy_delete(request: Request, authorization: str | None = Header(default=None)):
+    body = await request.json()
+    if not authorization or str(body.get("post_id")) not in lemmy_posts:
+        raise HTTPException(404, "Post not found")
+    lemmy_posts[str(body["post_id"])]["post"]["deleted"] = bool(body.get("deleted", True))
+    return {"post_view": lemmy_posts[str(body["post_id"])]}
 
 
 @app.post("/discourse/posts.json")

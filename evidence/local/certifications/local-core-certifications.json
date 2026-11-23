@@ -1,0 +1,958 @@
+{
+  "recorded_at": "2026-11-23T17:23:10.280830+00:00",
+  "mode": "local_or_approved_sandbox",
+  "results": [
+    {
+      "connector": "discourse",
+      "destination_id": "56c971ae-3537-46ce-bd8a-85d668e676bb",
+      "job": {
+        "job_id": "408fce91-78b9-4921-b2f9-724e41d7d5d4",
+        "kind": "certification",
+        "status": "succeeded",
+        "progress": 100,
+        "created_at": "2026-11-23T17:23:05.253442+00:00",
+        "updated_at": "2026-11-23T17:23:05.845755+00:00",
+        "started_at": "2026-11-23T17:23:05.782044+00:00",
+        "finished_at": "2026-11-23T17:23:05.844603+00:00",
+        "result_links": [
+          {
+            "rel": "evidence",
+            "href": "http://localhost:5000/incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172305Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=57ecd7d73769a1efa4c5cbad9303e66969b497938dde3b8addbd743aed368238",
+            "media_type": "application/json"
+          }
+        ],
+        "result": {
+          "certification_id": "09dc84e6-9238-4a5a-9e75-aa79cff9f9eb",
+          "cleanup_confirmed": true,
+          "connector_key": "discourse",
+          "connector_version": "1.0.0",
+          "created_at": "2026-11-23T17:23:05.254941+00:00",
+          "destination_id": "56c971ae-3537-46ce-bd8a-85d668e676bb",
+          "evidence_id": "certification:09dc84e6-9238-4a5a-9e75-aa79cff9f9eb",
+          "evidence_uri": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/evidence.json",
+          "evidence_url": "http://localhost:5000/incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172305Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=57ecd7d73769a1efa4c5cbad9303e66969b497938dde3b8addbd743aed368238",
+          "finished_at": "2026-11-23T17:23:05.828638+00:00",
+          "manifest": {
+            "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+            "cost_estimate_status": "not_estimated",
+            "cost_estimate_usd": null,
+            "evidence": {
+              "connector_key": "discourse",
+              "content_sha256": "c71efed72241c95720bc7ed8047024d51744490bf35f201a4f191839799171ad",
+              "destination_id": "56c971ae-3537-46ce-bd8a-85d668e676bb",
+              "evidence_id": "certification:09dc84e6-9238-4a5a-9e75-aa79cff9f9eb",
+              "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+            },
+            "generated_at": "2026-11-23T17:23:05.832533+00:00",
+            "kind": "certification",
+            "models": [],
+            "providers": [
+              {
+                "key": "discourse",
+                "version": "1.0.0"
+              }
+            ],
+            "rights": {
+              "ai_generated": false,
+              "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+              "license_verified": false,
+              "media": "user-provided or none"
+            },
+            "seed": null,
+            "settings": {
+              "app_env": "development",
+              "certification_mode": "local_or_approved_sandbox",
+              "simulation_mode": false
+            },
+            "timings_ms": {
+              "processing": 42
+            },
+            "warnings": []
+          },
+          "status": "passed",
+          "steps": [
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+              "finished_at": "2026-11-23T17:23:05.816948+00:00",
+              "name": "validate",
+              "started_at": "2026-11-23T17:23:05.816920+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+              "finished_at": "2026-11-23T17:23:05.824125+00:00",
+              "live_url": "http://mock-platforms:9000/discourse/t/1000",
+              "name": "publish",
+              "platform_post_id": "1000",
+              "started_at": "2026-11-23T17:23:05.816920+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+              "finished_at": "2026-11-23T17:23:05.824135+00:00",
+              "live_url": "http://mock-platforms:9000/discourse/t/1000",
+              "name": "confirm_live",
+              "started_at": "2026-11-23T17:23:05.816920+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+              "finished_at": "2026-11-23T17:23:05.826116+00:00",
+              "live_url": "http://mock-platforms:9000/discourse/t/1000",
+              "name": "get_status",
+              "platform_post_id": "1000",
+              "started_at": "2026-11-23T17:23:05.816920+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+              "finished_at": "2026-11-23T17:23:05.828562+00:00",
+              "name": "delete",
+              "platform_post_id": "1000",
+              "started_at": "2026-11-23T17:23:05.816920+00:00",
+              "status": "passed"
+            }
+          ]
+        },
+        "error": null
+      },
+      "certification": {
+        "certification_id": "09dc84e6-9238-4a5a-9e75-aa79cff9f9eb",
+        "destination_id": "56c971ae-3537-46ce-bd8a-85d668e676bb",
+        "evidence_id": "certification:09dc84e6-9238-4a5a-9e75-aa79cff9f9eb",
+        "connector_key": "discourse",
+        "connector_version": "1.0.0",
+        "status": "passed",
+        "steps": [
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+            "finished_at": "2026-11-23T17:23:05.816948+00:00",
+            "name": "validate",
+            "started_at": "2026-11-23T17:23:05.816920+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+            "finished_at": "2026-11-23T17:23:05.824125+00:00",
+            "live_url": "http://mock-platforms:9000/discourse/t/1000",
+            "name": "publish",
+            "platform_post_id": "1000",
+            "started_at": "2026-11-23T17:23:05.816920+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+            "finished_at": "2026-11-23T17:23:05.824135+00:00",
+            "live_url": "http://mock-platforms:9000/discourse/t/1000",
+            "name": "confirm_live",
+            "started_at": "2026-11-23T17:23:05.816920+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+            "finished_at": "2026-11-23T17:23:05.826116+00:00",
+            "live_url": "http://mock-platforms:9000/discourse/t/1000",
+            "name": "get_status",
+            "platform_post_id": "1000",
+            "started_at": "2026-11-23T17:23:05.816920+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/details.json",
+            "finished_at": "2026-11-23T17:23:05.828562+00:00",
+            "name": "delete",
+            "platform_post_id": "1000",
+            "started_at": "2026-11-23T17:23:05.816920+00:00",
+            "status": "passed"
+          }
+        ],
+        "cleanup_confirmed": true,
+        "created_at": "2026-11-23T17:23:05.254941+00:00",
+        "finished_at": "2026-11-23T17:23:05.828638+00:00",
+        "evidence_status": "available",
+        "evidence_uri": "s3://incubrix-artifacts/certifications/09dc84e6-9238-4a5a-9e75-aa79cff9f9eb/evidence.json",
+        "manifest": {
+          "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+          "cost_estimate_status": "not_estimated",
+          "cost_estimate_usd": null,
+          "evidence": {
+            "connector_key": "discourse",
+            "content_sha256": "c71efed72241c95720bc7ed8047024d51744490bf35f201a4f191839799171ad",
+            "destination_id": "56c971ae-3537-46ce-bd8a-85d668e676bb",
+            "evidence_id": "certification:09dc84e6-9238-4a5a-9e75-aa79cff9f9eb",
+            "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+          },
+          "generated_at": "2026-11-23T17:23:05.832533+00:00",
+          "kind": "certification",
+          "models": [],
+          "providers": [
+            {
+              "key": "discourse",
+              "version": "1.0.0"
+            }
+          ],
+          "rights": {
+            "ai_generated": false,
+            "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+            "license_verified": false,
+            "media": "user-provided or none"
+          },
+          "seed": null,
+          "settings": {
+            "app_env": "development",
+            "certification_mode": "local_or_approved_sandbox",
+            "simulation_mode": false
+          },
+          "timings_ms": {
+            "processing": 42
+          },
+          "warnings": []
+        }
+      }
+    },
+    {
+      "connector": "devto",
+      "destination_id": "11e5829f-1099-4c16-8d99-cecb206eb816",
+      "job": {
+        "job_id": "d6396326-5257-4eb3-ac71-fdb64b138bd3",
+        "kind": "certification",
+        "status": "succeeded",
+        "progress": 100,
+        "created_at": "2026-11-23T17:23:06.057769+00:00",
+        "updated_at": "2026-11-23T17:23:06.895310+00:00",
+        "started_at": "2026-11-23T17:23:06.850592+00:00",
+        "finished_at": "2026-11-23T17:23:06.894296+00:00",
+        "result_links": [
+          {
+            "rel": "evidence",
+            "href": "http://localhost:5000/incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172306Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=be0afcf924dcf52b2aac296cbc54c8c02cb33d99fa14b35b61d2de97ff197834",
+            "media_type": "application/json"
+          }
+        ],
+        "result": {
+          "certification_id": "e9aa03b3-f803-486c-9bd7-235dee96b316",
+          "cleanup_confirmed": true,
+          "connector_key": "devto",
+          "connector_version": "1.0.0",
+          "created_at": "2026-11-23T17:23:06.058659+00:00",
+          "destination_id": "11e5829f-1099-4c16-8d99-cecb206eb816",
+          "evidence_id": "certification:e9aa03b3-f803-486c-9bd7-235dee96b316",
+          "evidence_uri": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/evidence.json",
+          "evidence_url": "http://localhost:5000/incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172306Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=be0afcf924dcf52b2aac296cbc54c8c02cb33d99fa14b35b61d2de97ff197834",
+          "finished_at": "2026-11-23T17:23:06.880420+00:00",
+          "manifest": {
+            "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+            "cost_estimate_status": "not_estimated",
+            "cost_estimate_usd": null,
+            "evidence": {
+              "connector_key": "devto",
+              "content_sha256": "5308d4b7b7c5b1d55ad34f43d1914d226c15e02c872a869d55a543ec0dadaa2c",
+              "destination_id": "11e5829f-1099-4c16-8d99-cecb206eb816",
+              "evidence_id": "certification:e9aa03b3-f803-486c-9bd7-235dee96b316",
+              "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+            },
+            "generated_at": "2026-11-23T17:23:06.882084+00:00",
+            "kind": "certification",
+            "models": [],
+            "providers": [
+              {
+                "key": "devto",
+                "version": "1.0.0"
+              }
+            ],
+            "rights": {
+              "ai_generated": false,
+              "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+              "license_verified": false,
+              "media": "user-provided or none"
+            },
+            "seed": null,
+            "settings": {
+              "app_env": "development",
+              "certification_mode": "local_or_approved_sandbox",
+              "simulation_mode": false
+            },
+            "timings_ms": {
+              "processing": 22
+            },
+            "warnings": []
+          },
+          "status": "passed",
+          "steps": [
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+              "finished_at": "2026-11-23T17:23:06.868482+00:00",
+              "name": "validate",
+              "started_at": "2026-11-23T17:23:06.868416+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+              "finished_at": "2026-11-23T17:23:06.876580+00:00",
+              "live_url": "http://localhost:9000/devto/1001",
+              "name": "publish",
+              "platform_post_id": "1001",
+              "started_at": "2026-11-23T17:23:06.868416+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+              "finished_at": "2026-11-23T17:23:06.876600+00:00",
+              "live_url": "http://localhost:9000/devto/1001",
+              "name": "confirm_live",
+              "started_at": "2026-11-23T17:23:06.868416+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+              "finished_at": "2026-11-23T17:23:06.878868+00:00",
+              "live_url": "http://localhost:9000/devto/1001",
+              "name": "get_status",
+              "platform_post_id": "1001",
+              "started_at": "2026-11-23T17:23:06.868416+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+              "finished_at": "2026-11-23T17:23:06.880340+00:00",
+              "name": "delete",
+              "platform_post_id": "1001",
+              "started_at": "2026-11-23T17:23:06.868416+00:00",
+              "status": "passed"
+            }
+          ]
+        },
+        "error": null
+      },
+      "certification": {
+        "certification_id": "e9aa03b3-f803-486c-9bd7-235dee96b316",
+        "destination_id": "11e5829f-1099-4c16-8d99-cecb206eb816",
+        "evidence_id": "certification:e9aa03b3-f803-486c-9bd7-235dee96b316",
+        "connector_key": "devto",
+        "connector_version": "1.0.0",
+        "status": "passed",
+        "steps": [
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+            "finished_at": "2026-11-23T17:23:06.868482+00:00",
+            "name": "validate",
+            "started_at": "2026-11-23T17:23:06.868416+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+            "finished_at": "2026-11-23T17:23:06.876580+00:00",
+            "live_url": "http://localhost:9000/devto/1001",
+            "name": "publish",
+            "platform_post_id": "1001",
+            "started_at": "2026-11-23T17:23:06.868416+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+            "finished_at": "2026-11-23T17:23:06.876600+00:00",
+            "live_url": "http://localhost:9000/devto/1001",
+            "name": "confirm_live",
+            "started_at": "2026-11-23T17:23:06.868416+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+            "finished_at": "2026-11-23T17:23:06.878868+00:00",
+            "live_url": "http://localhost:9000/devto/1001",
+            "name": "get_status",
+            "platform_post_id": "1001",
+            "started_at": "2026-11-23T17:23:06.868416+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/details.json",
+            "finished_at": "2026-11-23T17:23:06.880340+00:00",
+            "name": "delete",
+            "platform_post_id": "1001",
+            "started_at": "2026-11-23T17:23:06.868416+00:00",
+            "status": "passed"
+          }
+        ],
+        "cleanup_confirmed": true,
+        "created_at": "2026-11-23T17:23:06.058659+00:00",
+        "finished_at": "2026-11-23T17:23:06.880420+00:00",
+        "evidence_status": "available",
+        "evidence_uri": "s3://incubrix-artifacts/certifications/e9aa03b3-f803-486c-9bd7-235dee96b316/evidence.json",
+        "manifest": {
+          "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+          "cost_estimate_status": "not_estimated",
+          "cost_estimate_usd": null,
+          "evidence": {
+            "connector_key": "devto",
+            "content_sha256": "5308d4b7b7c5b1d55ad34f43d1914d226c15e02c872a869d55a543ec0dadaa2c",
+            "destination_id": "11e5829f-1099-4c16-8d99-cecb206eb816",
+            "evidence_id": "certification:e9aa03b3-f803-486c-9bd7-235dee96b316",
+            "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+          },
+          "generated_at": "2026-11-23T17:23:06.882084+00:00",
+          "kind": "certification",
+          "models": [],
+          "providers": [
+            {
+              "key": "devto",
+              "version": "1.0.0"
+            }
+          ],
+          "rights": {
+            "ai_generated": false,
+            "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+            "license_verified": false,
+            "media": "user-provided or none"
+          },
+          "seed": null,
+          "settings": {
+            "app_env": "development",
+            "certification_mode": "local_or_approved_sandbox",
+            "simulation_mode": false
+          },
+          "timings_ms": {
+            "processing": 22
+          },
+          "warnings": []
+        }
+      }
+    },
+    {
+      "connector": "ghost",
+      "destination_id": "f7ef9c8c-0a2c-415f-a5a6-a2c420956d81",
+      "job": {
+        "job_id": "3e3ce702-60b8-48cc-91f0-725a46b947c2",
+        "kind": "certification",
+        "status": "succeeded",
+        "progress": 100,
+        "created_at": "2026-11-23T17:23:07.114981+00:00",
+        "updated_at": "2026-11-23T17:23:07.943805+00:00",
+        "started_at": "2026-11-23T17:23:07.899782+00:00",
+        "finished_at": "2026-11-23T17:23:07.942855+00:00",
+        "result_links": [
+          {
+            "rel": "evidence",
+            "href": "http://localhost:5000/incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172307Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=40cb4e6f931237defa4f6802c3f9ace5cabba0247418f0e1d878653197a35685",
+            "media_type": "application/json"
+          }
+        ],
+        "result": {
+          "certification_id": "ae630992-ecb2-4254-b501-2c55d72e8ab0",
+          "cleanup_confirmed": true,
+          "connector_key": "ghost",
+          "connector_version": "1.0.0",
+          "created_at": "2026-11-23T17:23:07.115624+00:00",
+          "destination_id": "f7ef9c8c-0a2c-415f-a5a6-a2c420956d81",
+          "evidence_id": "certification:ae630992-ecb2-4254-b501-2c55d72e8ab0",
+          "evidence_uri": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/evidence.json",
+          "evidence_url": "http://localhost:5000/incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172307Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=40cb4e6f931237defa4f6802c3f9ace5cabba0247418f0e1d878653197a35685",
+          "finished_at": "2026-11-23T17:23:07.930507+00:00",
+          "manifest": {
+            "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+            "cost_estimate_status": "not_estimated",
+            "cost_estimate_usd": null,
+            "evidence": {
+              "connector_key": "ghost",
+              "content_sha256": "7d31fdc91647dd85f50c9b3aca67c861ffd310e5a5b5390d5b58fd15697cfc89",
+              "destination_id": "f7ef9c8c-0a2c-415f-a5a6-a2c420956d81",
+              "evidence_id": "certification:ae630992-ecb2-4254-b501-2c55d72e8ab0",
+              "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+            },
+            "generated_at": "2026-11-23T17:23:07.931901+00:00",
+            "kind": "certification",
+            "models": [],
+            "providers": [
+              {
+                "key": "ghost",
+                "version": "1.0.0"
+              }
+            ],
+            "rights": {
+              "ai_generated": false,
+              "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+              "license_verified": false,
+              "media": "user-provided or none"
+            },
+            "seed": null,
+            "settings": {
+              "app_env": "development",
+              "certification_mode": "local_or_approved_sandbox",
+              "simulation_mode": false
+            },
+            "timings_ms": {
+              "processing": 26
+            },
+            "warnings": []
+          },
+          "status": "passed",
+          "steps": [
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+              "finished_at": "2026-11-23T17:23:07.911975+00:00",
+              "name": "validate",
+              "started_at": "2026-11-23T17:23:07.911952+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+              "finished_at": "2026-11-23T17:23:07.926894+00:00",
+              "live_url": "http://localhost:2368/p/1002/",
+              "name": "publish",
+              "platform_post_id": "1002",
+              "started_at": "2026-11-23T17:23:07.911952+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+              "finished_at": "2026-11-23T17:23:07.926902+00:00",
+              "live_url": "http://localhost:2368/p/1002/",
+              "name": "confirm_live",
+              "started_at": "2026-11-23T17:23:07.911952+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+              "finished_at": "2026-11-23T17:23:07.928942+00:00",
+              "live_url": "http://localhost:2368/p/1002/",
+              "name": "get_status",
+              "platform_post_id": "1002",
+              "started_at": "2026-11-23T17:23:07.911952+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+              "finished_at": "2026-11-23T17:23:07.930423+00:00",
+              "name": "delete",
+              "platform_post_id": "1002",
+              "started_at": "2026-11-23T17:23:07.911952+00:00",
+              "status": "passed"
+            }
+          ]
+        },
+        "error": null
+      },
+      "certification": {
+        "certification_id": "ae630992-ecb2-4254-b501-2c55d72e8ab0",
+        "destination_id": "f7ef9c8c-0a2c-415f-a5a6-a2c420956d81",
+        "evidence_id": "certification:ae630992-ecb2-4254-b501-2c55d72e8ab0",
+        "connector_key": "ghost",
+        "connector_version": "1.0.0",
+        "status": "passed",
+        "steps": [
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+            "finished_at": "2026-11-23T17:23:07.911975+00:00",
+            "name": "validate",
+            "started_at": "2026-11-23T17:23:07.911952+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+            "finished_at": "2026-11-23T17:23:07.926894+00:00",
+            "live_url": "http://localhost:2368/p/1002/",
+            "name": "publish",
+            "platform_post_id": "1002",
+            "started_at": "2026-11-23T17:23:07.911952+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+            "finished_at": "2026-11-23T17:23:07.926902+00:00",
+            "live_url": "http://localhost:2368/p/1002/",
+            "name": "confirm_live",
+            "started_at": "2026-11-23T17:23:07.911952+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+            "finished_at": "2026-11-23T17:23:07.928942+00:00",
+            "live_url": "http://localhost:2368/p/1002/",
+            "name": "get_status",
+            "platform_post_id": "1002",
+            "started_at": "2026-11-23T17:23:07.911952+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/details.json",
+            "finished_at": "2026-11-23T17:23:07.930423+00:00",
+            "name": "delete",
+            "platform_post_id": "1002",
+            "started_at": "2026-11-23T17:23:07.911952+00:00",
+            "status": "passed"
+          }
+        ],
+        "cleanup_confirmed": true,
+        "created_at": "2026-11-23T17:23:07.115624+00:00",
+        "finished_at": "2026-11-23T17:23:07.930507+00:00",
+        "evidence_status": "available",
+        "evidence_uri": "s3://incubrix-artifacts/certifications/ae630992-ecb2-4254-b501-2c55d72e8ab0/evidence.json",
+        "manifest": {
+          "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+          "cost_estimate_status": "not_estimated",
+          "cost_estimate_usd": null,
+          "evidence": {
+            "connector_key": "ghost",
+            "content_sha256": "7d31fdc91647dd85f50c9b3aca67c861ffd310e5a5b5390d5b58fd15697cfc89",
+            "destination_id": "f7ef9c8c-0a2c-415f-a5a6-a2c420956d81",
+            "evidence_id": "certification:ae630992-ecb2-4254-b501-2c55d72e8ab0",
+            "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+          },
+          "generated_at": "2026-11-23T17:23:07.931901+00:00",
+          "kind": "certification",
+          "models": [],
+          "providers": [
+            {
+              "key": "ghost",
+              "version": "1.0.0"
+            }
+          ],
+          "rights": {
+            "ai_generated": false,
+            "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+            "license_verified": false,
+            "media": "user-provided or none"
+          },
+          "seed": null,
+          "settings": {
+            "app_env": "development",
+            "certification_mode": "local_or_approved_sandbox",
+            "simulation_mode": false
+          },
+          "timings_ms": {
+            "processing": 26
+          },
+          "warnings": []
+        }
+      }
+    },
+    {
+      "connector": "signed-webhook",
+      "destination_id": "590ba8aa-9d9a-4b0c-8ad8-bc228ca2fdd3",
+      "job": {
+        "job_id": "dedc6ac9-8187-47f2-937a-8d96479e2ef7",
+        "kind": "certification",
+        "status": "succeeded",
+        "progress": 100,
+        "created_at": "2026-11-23T17:23:08.171322+00:00",
+        "updated_at": "2026-11-23T17:23:08.984558+00:00",
+        "started_at": "2026-11-23T17:23:08.948010+00:00",
+        "finished_at": "2026-11-23T17:23:08.983609+00:00",
+        "result_links": [
+          {
+            "rel": "evidence",
+            "href": "http://localhost:5000/incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172308Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=51e59f38bcafdc21b392bc56c4cf80ff041603764618262924db44fd8605d240",
+            "media_type": "application/json"
+          }
+        ],
+        "result": {
+          "certification_id": "291727a1-f4dc-4dde-93ee-e19110b19e39",
+          "cleanup_confirmed": true,
+          "connector_key": "signed-webhook",
+          "connector_version": "1.0.0",
+          "created_at": "2026-11-23T17:23:08.172506+00:00",
+          "destination_id": "590ba8aa-9d9a-4b0c-8ad8-bc228ca2fdd3",
+          "evidence_id": "certification:291727a1-f4dc-4dde-93ee-e19110b19e39",
+          "evidence_uri": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/evidence.json",
+          "evidence_url": "http://localhost:5000/incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172308Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=51e59f38bcafdc21b392bc56c4cf80ff041603764618262924db44fd8605d240",
+          "finished_at": "2026-11-23T17:23:08.970358+00:00",
+          "manifest": {
+            "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+            "cost_estimate_status": "not_estimated",
+            "cost_estimate_usd": null,
+            "evidence": {
+              "connector_key": "signed-webhook",
+              "content_sha256": "39a881098719473598ef4457414f56fe6af58b4486816c7e587182ca5ee2d96c",
+              "destination_id": "590ba8aa-9d9a-4b0c-8ad8-bc228ca2fdd3",
+              "evidence_id": "certification:291727a1-f4dc-4dde-93ee-e19110b19e39",
+              "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+            },
+            "generated_at": "2026-11-23T17:23:08.971560+00:00",
+            "kind": "certification",
+            "models": [],
+            "providers": [
+              {
+                "key": "signed-webhook",
+                "version": "1.0.0"
+              }
+            ],
+            "rights": {
+              "ai_generated": false,
+              "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+              "license_verified": false,
+              "media": "user-provided or none"
+            },
+            "seed": null,
+            "settings": {
+              "app_env": "development",
+              "certification_mode": "local_or_approved_sandbox",
+              "simulation_mode": false
+            },
+            "timings_ms": {
+              "processing": 16
+            },
+            "warnings": []
+          },
+          "status": "passed",
+          "steps": [
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+              "finished_at": "2026-11-23T17:23:08.961804+00:00",
+              "name": "validate",
+              "started_at": "2026-11-23T17:23:08.961780+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+              "finished_at": "2026-11-23T17:23:08.966988+00:00",
+              "live_url": "http://localhost:9000/partner/posts/1003",
+              "name": "publish",
+              "platform_post_id": "1003",
+              "started_at": "2026-11-23T17:23:08.961780+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+              "finished_at": "2026-11-23T17:23:08.966998+00:00",
+              "live_url": "http://localhost:9000/partner/posts/1003",
+              "name": "confirm_live",
+              "started_at": "2026-11-23T17:23:08.961780+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+              "finished_at": "2026-11-23T17:23:08.968968+00:00",
+              "live_url": "http://localhost:9000/partner/posts/1003",
+              "name": "get_status",
+              "platform_post_id": "1003",
+              "started_at": "2026-11-23T17:23:08.961780+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+              "finished_at": "2026-11-23T17:23:08.970292+00:00",
+              "name": "delete",
+              "platform_post_id": "1003",
+              "started_at": "2026-11-23T17:23:08.961780+00:00",
+              "status": "passed"
+            }
+          ]
+        },
+        "error": null
+      },
+      "certification": {
+        "certification_id": "291727a1-f4dc-4dde-93ee-e19110b19e39",
+        "destination_id": "590ba8aa-9d9a-4b0c-8ad8-bc228ca2fdd3",
+        "evidence_id": "certification:291727a1-f4dc-4dde-93ee-e19110b19e39",
+        "connector_key": "signed-webhook",
+        "connector_version": "1.0.0",
+        "status": "passed",
+        "steps": [
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+            "finished_at": "2026-11-23T17:23:08.961804+00:00",
+            "name": "validate",
+            "started_at": "2026-11-23T17:23:08.961780+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+            "finished_at": "2026-11-23T17:23:08.966988+00:00",
+            "live_url": "http://localhost:9000/partner/posts/1003",
+            "name": "publish",
+            "platform_post_id": "1003",
+            "started_at": "2026-11-23T17:23:08.961780+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+            "finished_at": "2026-11-23T17:23:08.966998+00:00",
+            "live_url": "http://localhost:9000/partner/posts/1003",
+            "name": "confirm_live",
+            "started_at": "2026-11-23T17:23:08.961780+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+            "finished_at": "2026-11-23T17:23:08.968968+00:00",
+            "live_url": "http://localhost:9000/partner/posts/1003",
+            "name": "get_status",
+            "platform_post_id": "1003",
+            "started_at": "2026-11-23T17:23:08.961780+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/details.json",
+            "finished_at": "2026-11-23T17:23:08.970292+00:00",
+            "name": "delete",
+            "platform_post_id": "1003",
+            "started_at": "2026-11-23T17:23:08.961780+00:00",
+            "status": "passed"
+          }
+        ],
+        "cleanup_confirmed": true,
+        "created_at": "2026-11-23T17:23:08.172506+00:00",
+        "finished_at": "2026-11-23T17:23:08.970358+00:00",
+        "evidence_status": "available",
+        "evidence_uri": "s3://incubrix-artifacts/certifications/291727a1-f4dc-4dde-93ee-e19110b19e39/evidence.json",
+        "manifest": {
+          "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+          "cost_estimate_status": "not_estimated",
+          "cost_estimate_usd": null,
+          "evidence": {
+            "connector_key": "signed-webhook",
+            "content_sha256": "39a881098719473598ef4457414f56fe6af58b4486816c7e587182ca5ee2d96c",
+            "destination_id": "590ba8aa-9d9a-4b0c-8ad8-bc228ca2fdd3",
+            "evidence_id": "certification:291727a1-f4dc-4dde-93ee-e19110b19e39",
+            "rules_sha256": "b4759c99cd1813d963e362d977eb915eab53014da34b9ce1dc209d53b1ebf340"
+          },
+          "generated_at": "2026-11-23T17:23:08.971560+00:00",
+          "kind": "certification",
+          "models": [],
+          "providers": [
+            {
+              "key": "signed-webhook",
+              "version": "1.0.0"
+            }
+          ],
+          "rights": {
+            "ai_generated": false,
+            "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+            "license_verified": false,
+            "media": "user-provided or none"
+          },
+          "seed": null,
+          "settings": {
+            "app_env": "development",
+            "certification_mode": "local_or_approved_sandbox",
+            "simulation_mode": false
+          },
+          "timings_ms": {
+            "processing": 16
+          },
+          "warnings": []
+        }
+      }
+    },
+    {
+      "connector": "assisted",
+      "destination_id": "0940a303-28d9-4e47-80dc-87af5d7a2493",
+      "job": {
+        "job_id": "f8dfc9c5-2038-43ff-8e86-b815affa3aa2",
+        "kind": "certification",
+        "status": "succeeded",
+        "progress": 100,
+        "created_at": "2026-11-23T17:23:09.231718+00:00",
+        "updated_at": "2026-11-23T17:23:10.019433+00:00",
+        "started_at": "2026-11-23T17:23:09.988937+00:00",
+        "finished_at": "2026-11-23T17:23:10.017994+00:00",
+        "result_links": [
+          {
+            "rel": "evidence",
+            "href": "http://localhost:5000/incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172310Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=263631984df96769230e414c8f1edd2e308bcc9ee52b51bd0eb3ed6a20aff885",
+            "media_type": "application/json"
+          }
+        ],
+        "result": {
+          "certification_id": "6c6690f9-29e3-4a2b-afa6-93c142542a19",
+          "cleanup_confirmed": false,
+          "connector_key": "assisted",
+          "connector_version": "1.0.0",
+          "created_at": "2026-11-23T17:23:09.232425+00:00",
+          "destination_id": "0940a303-28d9-4e47-80dc-87af5d7a2493",
+          "evidence_id": "certification:6c6690f9-29e3-4a2b-afa6-93c142542a19",
+          "evidence_uri": "s3://incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/evidence.json",
+          "evidence_url": "http://localhost:5000/incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/evidence.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=testing%2F20261123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261123T172310Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=263631984df96769230e414c8f1edd2e308bcc9ee52b51bd0eb3ed6a20aff885",
+          "finished_at": "2026-11-23T17:23:10.004646+00:00",
+          "manifest": {
+            "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+            "cost_estimate_status": "not_estimated",
+            "cost_estimate_usd": null,
+            "evidence": {
+              "connector_key": "assisted",
+              "content_sha256": "e0888559f3f44f8f4074478adcc6af0229e8160b69bdd3ab34bec9014fa3365d",
+              "destination_id": "0940a303-28d9-4e47-80dc-87af5d7a2493",
+              "evidence_id": "certification:6c6690f9-29e3-4a2b-afa6-93c142542a19",
+              "rules_sha256": "2c6a4876feff69d584ca10b6ea642083eac5e446d7a6092b5e7723d22d4d363e"
+            },
+            "generated_at": "2026-11-23T17:23:10.004698+00:00",
+            "kind": "certification",
+            "models": [],
+            "providers": [
+              {
+                "key": "assisted",
+                "version": "1.0.0"
+              }
+            ],
+            "rights": {
+              "ai_generated": false,
+              "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+              "license_verified": false,
+              "media": "user-provided or none"
+            },
+            "seed": null,
+            "settings": {
+              "app_env": "development",
+              "certification_mode": "local_or_approved_sandbox",
+              "simulation_mode": false
+            },
+            "timings_ms": {
+              "processing": 9
+            },
+            "warnings": [
+              "Certification did not pass."
+            ]
+          },
+          "status": "needs_review",
+          "steps": [
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/details.json",
+              "finished_at": "2026-11-23T17:23:10.004588+00:00",
+              "name": "validate",
+              "started_at": "2026-11-23T17:23:10.004563+00:00",
+              "status": "passed"
+            },
+            {
+              "evidence_ref": "s3://incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/details.json",
+              "finished_at": "2026-11-23T17:23:10.004595+00:00",
+              "name": "publish",
+              "started_at": "2026-11-23T17:23:10.004563+00:00",
+              "status": "skipped"
+            }
+          ]
+        },
+        "error": null
+      },
+      "certification": {
+        "certification_id": "6c6690f9-29e3-4a2b-afa6-93c142542a19",
+        "destination_id": "0940a303-28d9-4e47-80dc-87af5d7a2493",
+        "evidence_id": "certification:6c6690f9-29e3-4a2b-afa6-93c142542a19",
+        "connector_key": "assisted",
+        "connector_version": "1.0.0",
+        "status": "needs_review",
+        "steps": [
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/details.json",
+            "finished_at": "2026-11-23T17:23:10.004588+00:00",
+            "name": "validate",
+            "started_at": "2026-11-23T17:23:10.004563+00:00",
+            "status": "passed"
+          },
+          {
+            "evidence_ref": "s3://incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/details.json",
+            "finished_at": "2026-11-23T17:23:10.004595+00:00",
+            "name": "publish",
+            "started_at": "2026-11-23T17:23:10.004563+00:00",
+            "status": "skipped"
+          }
+        ],
+        "cleanup_confirmed": false,
+        "created_at": "2026-11-23T17:23:09.232425+00:00",
+        "finished_at": "2026-11-23T17:23:10.004646+00:00",
+        "evidence_status": "not_available",
+        "evidence_uri": "s3://incubrix-artifacts/certifications/6c6690f9-29e3-4a2b-afa6-93c142542a19/evidence.json",
+        "manifest": null
+      }
+    }
+  ]
+}
