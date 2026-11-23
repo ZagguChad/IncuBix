@@ -25,7 +25,7 @@ Publish and certification manifests carry deterministic evidence IDs and SHA-256
 
 - Six Core connector lifecycle certifications have not been recorded for all local instances/mocks.
 - The local Lemmy/Ghost credential bootstrap flow requires completion and documented evidence.
-- The Advanced 1,000-row timing result, labelled Precision@10 measurement, three measured connector metric flows, and full reviewed 150-destination catalogue evidence are not complete.
+- The 1,000-row catalogue import is measured at 1.2535 seconds in the local running stack. Labelled Precision@10, three measured connector metric flows, and full reviewed 150-destination catalogue evidence are not complete.
 - No real community was contacted or posted to. No external platform certification or public deployment is claimed.
 
 ## Safety and provenance
