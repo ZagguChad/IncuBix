@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-23T17:10:38.227033+00:00",
+  "scope": "local-only automated checks; no external platform calls",
+  "environment": {
+    "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "commands": [
+    {
+      "name": "pytest",
+      "command": [
+        "C:\\Users\\jagad\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "pytest"
+      ],
+      "exit_code": 0,
+      "log": "evidence/local/pytest.log",
+      "sha256": "2147bffc486cd1b40eb70431d9b89e7252d6ed558ce28c0e6d6aad19c44a01f8"
+    },
+    {
+      "name": "compose-config",
+      "command": [
+        "docker",
+        "compose",
+        "config",
+        "--quiet"
+      ],
+      "exit_code": 0,
+      "log": "evidence/local/compose-config.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

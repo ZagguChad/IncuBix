@@ -1,0 +1,62 @@
+[
+  {
+    "input_file": "assisted_pack.json",
+    "result_file": "assisted_pack.result.json",
+    "http_status": 200,
+    "job_status": null,
+    "error_code": null,
+    "outcome": "passed",
+    "passed": true,
+    "run_id": "local-stack-2026-11-23"
+  },
+  {
+    "input_file": "certification_validate_failure.json",
+    "result_file": "certification_validate_failure.result.json",
+    "http_status": 409,
+    "job_status": null,
+    "error_code": "DESTINATION_CONFLICT",
+    "outcome": "failure",
+    "passed": false,
+    "run_id": "local-stack-2026-11-23"
+  },
+  {
+    "input_file": "publish_missing_destination.json",
+    "result_file": "publish_missing_destination.result.json",
+    "http_status": 404,
+    "job_status": null,
+    "error_code": "DESTINATION_NOT_FOUND",
+    "outcome": "expected_failure",
+    "passed": true,
+    "run_id": "local-stack-2026-11-23"
+  },
+  {
+    "input_file": "reject_unsupported_image.json",
+    "result_file": "reject_unsupported_image.result.json",
+    "http_status": 200,
+    "job_status": null,
+    "error_code": null,
+    "outcome": "passed",
+    "passed": true,
+    "run_id": "local-stack-2026-11-23"
+  },
+  {
+    "input_file": "unsupported_assisted_metrics.json",
+    "result_file": "unsupported_assisted_metrics.result.json",
+    "http_status": 501,
+    "job_status": null,
+    "error_code": "CONNECTOR_DISABLED",
+    "outcome": "expected_failure",
+    "passed": true,
+    "run_id": "local-stack-2026-11-23"
+  },
+  {
+    "input_file": "validate_supported_text.json",
+    "result_file": "validate_supported_text.result.json",
+    "http_status": 200,
+    "job_status": null,
+    "error_code": null,
+    "outcome": "passed",
+    "passed": true,
+    "run_id": "local-stack-2026-11-23"
+  }
+]

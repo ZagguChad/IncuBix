@@ -1,0 +1,32 @@
+{
+  "input_file": "unsupported_assisted_metrics.json",
+  "request": {
+    "kind": "connector",
+    "connector_key": "assisted",
+    "method": "fetch_metrics",
+    "body": {
+      "platform_post_id": "manual-post-1",
+      "connection": {}
+    },
+    "expect": {
+      "http_status": 501,
+      "response": {
+        "error": {
+          "code": "CONNECTOR_DISABLED"
+        }
+      }
+    }
+  },
+  "result": {
+    "http_status": 501,
+    "response": {
+      "error": {
+        "code": "CONNECTOR_DISABLED",
+        "message": "Metrics are not available for this connector.",
+        "retryable": false,
+        "details": {}
+      }
+    },
+    "passed": true
+  }
+}

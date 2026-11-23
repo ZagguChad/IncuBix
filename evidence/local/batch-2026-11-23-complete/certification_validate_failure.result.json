@@ -1,0 +1,194 @@
+{
+  "input_file": "certification_validate_failure.json",
+  "request": {
+    "kind": "certification",
+    "destination": {
+      "name": "Phase 4 retained failure certification",
+      "url": "http://localhost/certification-validate-failure",
+      "platform_key": "discourse",
+      "surface": "topic",
+      "category": "developer",
+      "audience_tags": [
+        "local-test"
+      ],
+      "connector_key": "discourse",
+      "rules": {
+        "self_promo_allowed": true,
+        "link_policy": "allowed",
+        "disclosure_required": false,
+        "automation_allowed": true,
+        "content_types": [
+          "text"
+        ],
+        "spec": {
+          "title_max_chars": 255,
+          "body_max_chars": 5,
+          "links_allowed": true
+        }
+      }
+    },
+    "expect": {
+      "http_status": 202,
+      "destination_http_status": 201,
+      "result": {
+        "status": "failed",
+        "error": {
+          "code": "PLATFORM_UNAVAILABLE",
+          "details": {
+            "cleanup_confirmed": false
+          }
+        }
+      },
+      "certification_record": {
+        "status": "failed",
+        "cleanup_confirmed": false,
+        "steps": [
+          {
+            "name": "validate",
+            "status": "failed",
+            "error_code": "DEST_SPEC_VIOLATION"
+          }
+        ]
+      }
+    }
+  },
+  "result": {
+    "http_status": 202,
+    "destination_http_status": 201,
+    "response": {
+      "job_id": "7b67c5a7-7737-4e08-aac5-c57f612050a9",
+      "kind": "certification",
+      "status": "queued",
+      "progress": 0,
+      "created_at": "2026-11-23T17:10:23.791785+00:00",
+      "updated_at": "2026-11-23T17:10:23.791788+00:00",
+      "started_at": null,
+      "finished_at": null,
+      "result_links": [],
+      "result": null,
+      "error": null
+    },
+    "job_history": [
+      {
+        "job_id": "7b67c5a7-7737-4e08-aac5-c57f612050a9",
+        "kind": "certification",
+        "status": "queued",
+        "progress": 0,
+        "created_at": "2026-11-23T17:10:23.791785+00:00",
+        "updated_at": "2026-11-23T17:10:23.791788+00:00",
+        "started_at": null,
+        "finished_at": null,
+        "result_links": [],
+        "result": null,
+        "error": null
+      },
+      {
+        "job_id": "7b67c5a7-7737-4e08-aac5-c57f612050a9",
+        "kind": "certification",
+        "status": "failed",
+        "progress": 100,
+        "created_at": "2026-11-23T17:10:23.791785+00:00",
+        "updated_at": "2026-11-23T17:10:23.982625+00:00",
+        "started_at": "2026-11-23T17:10:23.951399+00:00",
+        "finished_at": "2026-11-23T17:10:23.981297+00:00",
+        "result_links": [],
+        "result": null,
+        "error": {
+          "code": "PLATFORM_UNAVAILABLE",
+          "message": "Certification failed. See the stored run evidence.",
+          "retryable": false,
+          "details": {
+            "certification_id": "78d41dbe-5e97-4346-8855-e26a370d40dd",
+            "cleanup_confirmed": false,
+            "evidence_uri": "s3://incubrix-artifacts/certifications/78d41dbe-5e97-4346-8855-e26a370d40dd/evidence.json"
+          }
+        }
+      }
+    ],
+    "result": {
+      "job_id": "7b67c5a7-7737-4e08-aac5-c57f612050a9",
+      "kind": "certification",
+      "status": "failed",
+      "progress": 100,
+      "created_at": "2026-11-23T17:10:23.791785+00:00",
+      "updated_at": "2026-11-23T17:10:23.982625+00:00",
+      "started_at": "2026-11-23T17:10:23.951399+00:00",
+      "finished_at": "2026-11-23T17:10:23.981297+00:00",
+      "result_links": [],
+      "result": null,
+      "error": {
+        "code": "PLATFORM_UNAVAILABLE",
+        "message": "Certification failed. See the stored run evidence.",
+        "retryable": false,
+        "details": {
+          "certification_id": "78d41dbe-5e97-4346-8855-e26a370d40dd",
+          "cleanup_confirmed": false,
+          "evidence_uri": "s3://incubrix-artifacts/certifications/78d41dbe-5e97-4346-8855-e26a370d40dd/evidence.json"
+        }
+      }
+    },
+    "certification_record": {
+      "certification_id": "78d41dbe-5e97-4346-8855-e26a370d40dd",
+      "destination_id": "0af32c6e-ba04-4c9e-ac17-36c394c74a8f",
+      "evidence_id": "certification:78d41dbe-5e97-4346-8855-e26a370d40dd",
+      "connector_key": "discourse",
+      "connector_version": "1.0.0",
+      "status": "failed",
+      "steps": [
+        {
+          "error_code": "DEST_SPEC_VIOLATION",
+          "evidence_ref": "s3://incubrix-artifacts/certifications/78d41dbe-5e97-4346-8855-e26a370d40dd/details.json",
+          "finished_at": "2026-11-23T17:10:23.968772+00:00",
+          "name": "validate",
+          "started_at": "2026-11-23T17:10:23.968690+00:00",
+          "status": "failed"
+        }
+      ],
+      "cleanup_confirmed": false,
+      "created_at": "2026-11-23T17:10:23.794329+00:00",
+      "finished_at": "2026-11-23T17:10:23.968880+00:00",
+      "evidence_status": "available",
+      "evidence_uri": "s3://incubrix-artifacts/certifications/78d41dbe-5e97-4346-8855-e26a370d40dd/evidence.json",
+      "manifest": {
+        "cost_estimate_note": "Provider and infrastructure billing data is not available to this service.",
+        "cost_estimate_status": "not_estimated",
+        "cost_estimate_usd": null,
+        "evidence": {
+          "connector_key": "discourse",
+          "content_sha256": "4693e0425d1b8111d2175cc9c7b283c7a447249ef8372cbe542cbac973dae90f",
+          "destination_id": "0af32c6e-ba04-4c9e-ac17-36c394c74a8f",
+          "evidence_id": "certification:78d41dbe-5e97-4346-8855-e26a370d40dd",
+          "rules_sha256": "978cda5d95340365bb0dc8a5045e4b280d4069cec2dba3d50c4f8cf81f0cb799"
+        },
+        "generated_at": "2026-11-23T17:10:23.968940+00:00",
+        "kind": "certification",
+        "models": [],
+        "providers": [
+          {
+            "key": "discourse",
+            "version": "1.0.0"
+          }
+        ],
+        "rights": {
+          "ai_generated": false,
+          "commercial_use": "only when every configured connector, input media source, and output is appropriately licensed",
+          "license_verified": false,
+          "media": "user-provided or none"
+        },
+        "seed": null,
+        "settings": {
+          "app_env": "development",
+          "certification_mode": "simulation",
+          "simulation_mode": true
+        },
+        "timings_ms": {
+          "processing": 8
+        },
+        "warnings": [
+          "Certification did not pass."
+        ]
+      }
+    },
+    "passed": true
+  }
+}

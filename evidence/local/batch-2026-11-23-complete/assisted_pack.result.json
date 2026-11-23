@@ -1,0 +1,41 @@
+{
+  "input_file": "assisted_pack.json",
+  "request": {
+    "kind": "connector",
+    "connector_key": "assisted",
+    "method": "build_assist_pack",
+    "body": {
+      "rendition": {
+        "title": "Review this post",
+        "body": "A human will publish after reviewing the rules.",
+        "media": []
+      },
+      "destination": {
+        "url": "https://community.example/submit"
+      }
+    },
+    "expect": {
+      "http_status": 200,
+      "response": {
+        "checklist": [
+          "Publish manually; this connector does not post on your behalf."
+        ]
+      }
+    }
+  },
+  "result": {
+    "http_status": 200,
+    "response": {
+      "files": [],
+      "caption": "A human will publish after reviewing the rules.",
+      "deep_link": "https://community.example/submit",
+      "checklist": [
+        "Review and follow the destination rules before posting.",
+        "Confirm that links and self-promotion are permitted.",
+        "Add the required AI disclosure if the content is AI-generated.",
+        "Publish manually; this connector does not post on your behalf."
+      ]
+    },
+    "passed": true
+  }
+}
