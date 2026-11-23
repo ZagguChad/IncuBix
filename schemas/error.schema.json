@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.local/schemas/error.schema.json",
+  "title": "IncuBrix API Error",
+  "$defs": {
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message", "retryable", "details"],
+      "properties": {
+        "code": {
+          "enum": ["DEST_SPEC_VIOLATION", "DEST_RULE_FREQUENCY_CAP", "CONNECTION_AUTH_EXPIRED", "PLATFORM_RATE_LIMIT", "PLATFORM_QUOTA_EXHAUSTED", "PLATFORM_CONTENT_REJECTED", "PLATFORM_UNAVAILABLE", "CONNECTOR_DISABLED", "IDEMPOTENCY_CONFLICT", "DESTINATION_NOT_FOUND", "DESTINATION_CONFLICT", "UNAUTHORIZED", "FORBIDDEN", "INTERNAL_ERROR"]
+        },
+        "message": { "type": "string", "minLength": 1 },
+        "retryable": { "type": "boolean" },
+        "details": { "type": "object", "additionalProperties": true }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["error"],
+  "properties": { "error": { "$ref": "#/$defs/error" } }
+}

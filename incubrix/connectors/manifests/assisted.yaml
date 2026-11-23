@@ -1,0 +1,14 @@
+key: assisted
+version: 1.0.0
+tier: assisted
+auth: none
+surfaces:
+  - key: manual-submit
+    content_types: [text, image, video_link, article]
+    spec: {title_max_chars: 500, body_max_chars: 50000, links_allowed: true}
+rate_limits:
+  per_connection: {requests: 100, per_seconds: 60}
+capabilities: [build_assist_pack]
+error_map:
+  "403": CONNECTOR_DISABLED
+instance_param: submit_url

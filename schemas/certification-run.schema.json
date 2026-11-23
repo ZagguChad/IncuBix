@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.local/schemas/certification-run.schema.json",
+  "title": "IncuBrix Connector Certification Run",
+  "$defs": {
+    "outputManifest": {
+      "type": "object",
+      "required": ["kind", "providers", "models", "settings", "seed", "timings_ms", "cost_estimate_usd", "cost_estimate_status", "cost_estimate_note", "warnings", "rights", "generated_at"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "providers": { "type": "array", "items": { "type": "object", "required": ["key", "version"], "properties": { "key": { "type": "string", "minLength": 1 }, "version": { "type": "string", "minLength": 1 } }, "additionalProperties": false } },
+        "models": { "type": "array" },
+        "settings": { "type": "object" },
+        "seed": { "type": ["integer", "string", "null"] },
+        "timings_ms": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
+        "cost_estimate_usd": { "type": ["number", "null"], "minimum": 0 },
+        "cost_estimate_status": { "enum": ["estimated", "not_estimated"] },
+        "cost_estimate_note": { "type": "string" },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "rights": { "type": "object" },
+        "generated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["certification_id", "destination_id", "evidence_id", "connector_key", "connector_version", "status", "steps", "cleanup_confirmed", "created_at", "manifest"],
+  "properties": {
+    "certification_id": { "type": "string", "format": "uuid" },
+    "destination_id": { "type": "string", "format": "uuid" },
+    "evidence_id": { "type": "string", "minLength": 1 },
+    "connector_key": { "type": "string", "minLength": 1 },
+    "connector_version": { "type": "string" },
+    "status": { "enum": ["queued", "running", "passed", "failed", "needs_review"] },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "started_at"],
+        "properties": {
+          "name": { "enum": ["validate", "publish", "confirm_live", "get_status", "delete"] },
+          "status": { "enum": ["pending", "running", "passed", "failed", "skipped"] },
+          "started_at": { "type": "string", "format": "date-time" },
+          "finished_at": { "type": ["string", "null"], "format": "date-time" },
+          "platform_post_id": { "type": ["string", "null"] },
+          "live_url": { "type": ["string", "null"], "format": "uri" },
+          "error_code": { "type": ["string", "null"] },
+          "evidence_ref": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "cleanup_confirmed": { "type": "boolean" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "finished_at": { "type": ["string", "null"], "format": "date-time" },
+    "evidence_status": { "enum": ["not_available", "available", "missing", "manifest_missing", "corrupt"] },
+    "evidence_uri": { "type": ["string", "null"], "format": "uri-reference" },
+    "manifest": { "oneOf": [{ "$ref": "#/$defs/outputManifest" }, { "type": "null" }] }
+  }
+}

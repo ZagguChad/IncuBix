@@ -1,0 +1,1185 @@
+openapi: 3.1.0
+info:
+  title: IncuBrix Distribution Connector Service
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      tags:
+      - health
+      summary: Health
+      operationId: health_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /ready:
+    get:
+      tags:
+      - health
+      summary: Ready
+      operationId: ready_ready_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/connectors:
+    get:
+      tags:
+      - connectors
+      summary: List Connectors
+      operationId: list_connectors_api_v1_connectors_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/destinations:
+    get:
+      tags:
+      - destinations
+      summary: List Destinations
+      operationId: list_destinations_api_v1_destinations_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - destinations
+      summary: Create Destination
+      operationId: create_destination_api_v1_destinations_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DestinationCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/recommendations:
+    post:
+      tags:
+      - recommendations
+      summary: Recommend Destinations
+      operationId: recommend_destinations_api_v1_recommendations_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecommendationRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/recommendations/{recommendation_key}/feedback:
+    post:
+      tags:
+      - recommendations
+      summary: Record Recommendation Feedback
+      operationId: record_recommendation_feedback_api_v1_recommendations__recommendation_key__feedback_post
+      parameters:
+      - name: recommendation_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Recommendation Key
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecommendationFeedbackRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/recommendations/metrics:
+    get:
+      tags:
+      - recommendations
+      summary: Recommendation Metrics
+      operationId: recommendation_metrics_api_v1_recommendations_metrics_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/tailor:
+    post:
+      tags:
+      - recommendations
+      summary: Tailor Rendition
+      operationId: tailor_rendition_api_v1_tailor_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TailorRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/rule-proposals:
+    post:
+      tags:
+      - rules
+      summary: Create Rule Proposal
+      operationId: create_rule_proposal_api_v1_rule_proposals_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleProposalRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/rule-proposals/{proposal_id}/confirm:
+    post:
+      tags:
+      - rules
+      summary: Confirm Rule Proposal
+      operationId: confirm_rule_proposal_api_v1_rule_proposals__proposal_id__confirm_post
+      parameters:
+      - name: proposal_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Proposal Id
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/{destination_id}:
+    get:
+      tags:
+      - destinations
+      summary: Get Destination
+      operationId: get_destination_api_v1_destinations__destination_id__get
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Destination Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/{destination_id}/passport:
+    get:
+      tags:
+      - destinations
+      summary: Get Destination Passport
+      operationId: get_destination_passport_api_v1_destinations__destination_id__passport_get
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Destination Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/policy-evaluations:
+    post:
+      tags:
+      - rules
+      summary: Evaluate Policy
+      operationId: evaluate_policy_api_v1_policy_evaluations_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyEvaluationRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/recertification-tickets:
+    get:
+      tags:
+      - certifications
+      summary: List Recertification Tickets
+      operationId: list_recertification_tickets_api_v1_recertification_tickets_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 50
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/{destination_id}/validate:
+    post:
+      tags:
+      - destinations
+      summary: Validate Destination
+      operationId: validate_destination_api_v1_destinations__destination_id__validate_post
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Destination Id
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DestinationValidationRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/catalogue/import:
+    post:
+      tags:
+      - catalogue
+      summary: Import Catalogue
+      operationId: import_catalogue_api_v1_catalogue_import_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_import_catalogue_api_v1_catalogue_import_post'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/destinations/{destination_id}/certifications:
+    post:
+      tags:
+      - certifications
+      summary: Create Certification
+      operationId: create_certification_api_v1_destinations__destination_id__certifications_post
+      parameters:
+      - name: destination_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Destination Id
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/CertificationCreate'
+              - type: 'null'
+              title: Body
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/publishes:
+    post:
+      tags:
+      - publishes
+      summary: Create Publish
+      operationId: create_publish_api_v1_publishes_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishCreate'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/artifacts:
+    post:
+      tags:
+      - artifacts
+      summary: Upload Artifact
+      operationId: upload_artifact_api_v1_artifacts_post
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_upload_artifact_api_v1_artifacts_post'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/jobs/{job_id}:
+    get:
+      tags:
+      - jobs
+      summary: Get Job
+      operationId: get_job_api_v1_jobs__job_id__get
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/certifications/{certification_id}:
+    get:
+      tags:
+      - certifications
+      summary: Get Certification
+      operationId: get_certification_api_v1_certifications__certification_id__get
+      parameters:
+      - name: certification_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Certification Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /connector/v1/{connector_key}/{method}:
+    post:
+      tags:
+      - connector contract
+      summary: Invoke Connector
+      operationId: invoke_connector_connector_v1__connector_key___method__post
+      parameters:
+      - name: connector_key
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connector Key
+      - name: method
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Method
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              title: Body
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/evidence/{job_id}:
+    get:
+      tags:
+      - evidence
+      summary: Get Evidence
+      operationId: get_evidence_api_v1_evidence__job_id__get
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Body_import_catalogue_api_v1_catalogue_import_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+      - file
+      title: Body_import_catalogue_api_v1_catalogue_import_post
+    Body_upload_artifact_api_v1_artifacts_post:
+      properties:
+        file:
+          anyOf:
+          - type: string
+            format: binary
+          - type: 'null'
+          title: File
+        source_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Source Url
+        license_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: License Name
+        license_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: License Url
+      type: object
+      title: Body_upload_artifact_api_v1_artifacts_post
+    CertificationCreate:
+      properties:
+        callback_url:
+          anyOf:
+          - type: string
+            maxLength: 2083
+            minLength: 1
+            format: uri
+          - type: 'null'
+          title: Callback Url
+      additionalProperties: false
+      type: object
+      title: CertificationCreate
+    DestinationCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Name
+        url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Url
+        platform_key:
+          type: string
+          maxLength: 80
+          minLength: 1
+          pattern: ^[a-z][a-z0-9_-]{0,79}$
+          title: Platform Key
+        surface:
+          type: string
+          maxLength: 80
+          minLength: 1
+          pattern: ^[a-z][a-z0-9_-]{0,79}$
+          title: Surface
+        category:
+          type: string
+          maxLength: 120
+          minLength: 1
+          title: Category
+        audience_tags:
+          items:
+            type: string
+          type: array
+          maxItems: 50
+          title: Audience Tags
+        language:
+          type: string
+          maxLength: 35
+          minLength: 2
+          title: Language
+          default: en
+        geo:
+          anyOf:
+          - type: string
+            maxLength: 100
+          - type: 'null'
+          title: Geo
+        est_audience:
+          anyOf:
+          - type: integer
+            minimum: 0.0
+          - type: 'null'
+          title: Est Audience
+        rules_url:
+          anyOf:
+          - type: string
+            maxLength: 2083
+            minLength: 1
+            format: uri
+          - type: 'null'
+          title: Rules Url
+        connector_key:
+          type: string
+          pattern: ^[a-z][a-z0-9_-]{1,62}$
+          title: Connector Key
+        relevance_score:
+          anyOf:
+          - type: integer
+            maximum: 5.0
+            minimum: 1.0
+          - type: 'null'
+          title: Relevance Score
+        relevance_reason:
+          anyOf:
+          - type: string
+            maxLength: 1000
+          - type: 'null'
+          title: Relevance Reason
+        level:
+          type: string
+          enum:
+          - L0
+          - L1
+          - L2
+          - L3
+          - L4
+          title: Level
+          default: L0
+        rules:
+          $ref: '#/components/schemas/DestinationRules'
+        connection:
+          additionalProperties: true
+          type: object
+          title: Connection
+      additionalProperties: false
+      type: object
+      required:
+      - name
+      - url
+      - platform_key
+      - surface
+      - category
+      - connector_key
+      title: DestinationCreate
+    DestinationRules:
+      properties:
+        frequency_cap:
+          anyOf:
+          - $ref: '#/components/schemas/FrequencyCap'
+          - type: 'null'
+        self_promo_allowed:
+          type: boolean
+          title: Self Promo Allowed
+          default: false
+        link_policy:
+          type: string
+          enum:
+          - allowed
+          - canonical_only
+          - no_links
+          - review_required
+          title: Link Policy
+          default: review_required
+        disclosure_required:
+          type: boolean
+          title: Disclosure Required
+          default: true
+        automation_allowed:
+          type: boolean
+          title: Automation Allowed
+          default: true
+        permission_status:
+          type: string
+          enum:
+          - unknown
+          - verified
+          - revoked
+          title: Permission Status
+          default: unknown
+        spec:
+          $ref: '#/components/schemas/DestinationSpec'
+        content_types:
+          items:
+            type: string
+            enum:
+            - text
+            - image
+            - video_link
+            - audio
+            - article
+          type: array
+          maxItems: 5
+          minItems: 1
+          title: Content Types
+      additionalProperties: false
+      type: object
+      title: DestinationRules
+    DestinationSpec:
+      properties:
+        title_max_chars:
+          anyOf:
+          - type: integer
+            maximum: 100000.0
+            minimum: 0.0
+          - type: 'null'
+          title: Title Max Chars
+        body_max_chars:
+          anyOf:
+          - type: integer
+            maximum: 1000000.0
+            minimum: 0.0
+          - type: 'null'
+          title: Body Max Chars
+        links_allowed:
+          type: boolean
+          title: Links Allowed
+          default: true
+      additionalProperties: false
+      type: object
+      title: DestinationSpec
+    DestinationValidationRequest:
+      properties:
+        rendition:
+          $ref: '#/components/schemas/Rendition'
+      additionalProperties: false
+      type: object
+      required:
+      - rendition
+      title: DestinationValidationRequest
+    FrequencyCap:
+      properties:
+        max_posts:
+          type: integer
+          minimum: 0.0
+          title: Max Posts
+        window_seconds:
+          type: integer
+          maximum: 31536000.0
+          exclusiveMinimum: 0.0
+          title: Window Seconds
+      additionalProperties: false
+      type: object
+      required:
+      - max_posts
+      - window_seconds
+      title: FrequencyCap
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    MediaItem:
+      properties:
+        url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Url
+        media_type:
+          type: string
+          enum:
+          - image
+          - video
+          - audio
+          title: Media Type
+        alt_text:
+          anyOf:
+          - type: string
+            maxLength: 2000
+          - type: 'null'
+          title: Alt Text
+      additionalProperties: false
+      type: object
+      required:
+      - url
+      - media_type
+      title: MediaItem
+    PolicyEvaluationRequest:
+      properties:
+        destination_id:
+          type: string
+          format: uuid
+          title: Destination Id
+        rendition:
+          $ref: '#/components/schemas/Rendition'
+      additionalProperties: false
+      type: object
+      required:
+      - destination_id
+      - rendition
+      title: PolicyEvaluationRequest
+    PublishCreate:
+      properties:
+        destination_id:
+          type: string
+          format: uuid
+          title: Destination Id
+        rendition:
+          $ref: '#/components/schemas/Rendition'
+        dry_run:
+          type: boolean
+          title: Dry Run
+          default: false
+        callback_url:
+          anyOf:
+          - type: string
+            maxLength: 2083
+            minLength: 1
+            format: uri
+          - type: 'null'
+          title: Callback Url
+      additionalProperties: false
+      type: object
+      required:
+      - destination_id
+      - rendition
+      title: PublishCreate
+    RecommendationFeedbackRequest:
+      properties:
+        destination_id:
+          type: string
+          format: uuid
+          title: Destination Id
+        accepted:
+          type: boolean
+          title: Accepted
+      additionalProperties: false
+      type: object
+      required:
+      - destination_id
+      - accepted
+      title: RecommendationFeedbackRequest
+    RecommendationRequest:
+      properties:
+        audience_tags:
+          items:
+            type: string
+          type: array
+          maxItems: 50
+          title: Audience Tags
+        language:
+          anyOf:
+          - type: string
+            maxLength: 35
+            minLength: 2
+          - type: 'null'
+          title: Language
+        rendition:
+          anyOf:
+          - $ref: '#/components/schemas/Rendition'
+          - type: 'null'
+        limit:
+          type: integer
+          maximum: 50.0
+          minimum: 1.0
+          title: Limit
+          default: 10
+      additionalProperties: false
+      type: object
+      title: RecommendationRequest
+    Rendition:
+      properties:
+        title:
+          anyOf:
+          - type: string
+            maxLength: 1000
+          - type: 'null'
+          title: Title
+        body:
+          type: string
+          maxLength: 100000
+          minLength: 1
+          title: Body
+        canonical_url:
+          anyOf:
+          - type: string
+            maxLength: 2083
+            minLength: 1
+            format: uri
+          - type: 'null'
+          title: Canonical Url
+        media:
+          items:
+            $ref: '#/components/schemas/MediaItem'
+          type: array
+          maxItems: 25
+          title: Media
+        tags:
+          items:
+            type: string
+          type: array
+          maxItems: 4
+          title: Tags
+        is_promotional:
+          type: boolean
+          title: Is Promotional
+          default: false
+        ai_generated:
+          type: boolean
+          title: Ai Generated
+          default: false
+        ai_disclosure:
+          anyOf:
+          - type: string
+            maxLength: 1000
+          - type: 'null'
+          title: Ai Disclosure
+        metadata:
+          additionalProperties:
+            anyOf:
+            - type: string
+            - type: integer
+            - type: number
+            - type: boolean
+            - type: 'null'
+          type: object
+          maxProperties: 25
+          title: Metadata
+      additionalProperties: false
+      type: object
+      required:
+      - body
+      title: Rendition
+    RuleProposalRequest:
+      properties:
+        rules_text:
+          anyOf:
+          - type: string
+            maxLength: 50000
+            minLength: 1
+          - type: 'null'
+          title: Rules Text
+        source_url:
+          anyOf:
+          - type: string
+            maxLength: 2083
+            minLength: 1
+            format: uri
+          - type: 'null'
+          title: Source Url
+        destination_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Destination Id
+      additionalProperties: false
+      type: object
+      title: RuleProposalRequest
+    TailorRequest:
+      properties:
+        destination_id:
+          type: string
+          format: uuid
+          title: Destination Id
+        rendition:
+          $ref: '#/components/schemas/Rendition'
+      additionalProperties: false
+      type: object
+      required:
+      - destination_id
+      - rendition
+      title: TailorRequest
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

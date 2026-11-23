@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.local/schemas/output-manifest.schema.json",
+  "title": "IncuBrix Output Manifest",
+  "type": "object",
+  "required": [
+    "kind",
+    "providers",
+    "models",
+    "settings",
+    "seed",
+    "timings_ms",
+    "cost_estimate_usd",
+    "cost_estimate_status",
+    "cost_estimate_note",
+    "warnings",
+    "rights",
+    "generated_at"
+  ],
+  "properties": {
+    "kind": { "type": "string", "minLength": 1 },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "version"],
+        "properties": {
+          "key": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "models": { "type": "array" },
+    "settings": { "type": "object" },
+    "seed": { "type": ["integer", "string", "null"] },
+    "timings_ms": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "cost_estimate_usd": { "type": ["number", "null"], "minimum": 0 },
+    "cost_estimate_status": { "enum": ["estimated", "not_estimated"] },
+    "cost_estimate_note": { "type": "string" },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "rights": { "type": "object" },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

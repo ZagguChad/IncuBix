@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.local/schemas/job.schema.json",
+  "title": "IncuBrix Background Job",
+  "$defs": {
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message", "retryable", "details"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "retryable": { "type": "boolean" },
+        "details": { "type": "object", "additionalProperties": true }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["job_id", "kind", "status", "progress", "created_at", "updated_at"],
+  "properties": {
+    "job_id": { "type": "string", "format": "uuid" },
+    "kind": { "enum": ["publish", "certification", "catalogue_import", "recertification"] },
+    "status": { "enum": ["queued", "running", "succeeded", "failed"] },
+    "progress": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "started_at": { "type": ["string", "null"], "format": "date-time" },
+    "finished_at": { "type": ["string", "null"], "format": "date-time" },
+    "result_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rel", "href"],
+        "properties": {
+          "rel": { "type": "string" },
+          "href": { "type": "string", "format": "uri-reference" },
+          "media_type": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "result": { "type": ["object", "null"], "additionalProperties": true },
+    "error": { "anyOf": [{ "$ref": "#/$defs/error" }, { "type": "null" }] }
+  }
+}

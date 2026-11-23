@@ -1,0 +1,3 @@
+name,url,platform_key,surface,category,connector_key,audience_tags,language,geo,est_audience,rules_url,level
+Example AI Forum,https://community.example/ai,example-forum,community,developer,assisted,AI|engineering,en,global,1200,https://community.example/rules,L0
+Example Creator Network,https://creators.example/topics/technology,example-network,topic,technology,assisted,video|technology,en,global,800,,L0

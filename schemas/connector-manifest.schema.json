@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.local/schemas/connector-manifest.schema.json",
+  "title": "IncuBrix Connector Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["key", "version", "tier", "auth", "surfaces", "rate_limits", "capabilities", "error_map", "instance_param"],
+  "properties": {
+    "key": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{1,62}$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "tier": { "enum": ["native", "protocol", "bridge", "feed", "assisted"] },
+    "auth": { "enum": ["oauth2", "api_key", "bot_token", "none"] },
+    "surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "content_types", "spec"],
+        "properties": {
+          "key": { "type": "string", "minLength": 1 },
+          "content_types": { "type": "array", "items": { "enum": ["text", "image", "video_link", "audio", "article"] }, "uniqueItems": true },
+          "spec": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "title_max_chars": { "type": "integer", "minimum": 0 },
+              "body_max_chars": { "type": "integer", "minimum": 0 },
+              "links_allowed": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "rate_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["per_connection"],
+      "properties": {
+        "per_connection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requests", "per_seconds"],
+          "properties": {
+            "requests": { "type": "integer", "minimum": 1 },
+            "per_seconds": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["validate", "publish", "status", "delete", "metrics", "refresh_auth", "build_assist_pack"] }
+    },
+    "error_map": {
+      "type": "object",
+      "propertyNames": { "minLength": 1 },
+      "additionalProperties": { "enum": ["DEST_SPEC_VIOLATION", "DEST_RULE_FREQUENCY_CAP", "CONNECTION_AUTH_EXPIRED", "PLATFORM_RATE_LIMIT", "PLATFORM_QUOTA_EXHAUSTED", "PLATFORM_CONTENT_REJECTED", "PLATFORM_UNAVAILABLE", "CONNECTOR_DISABLED"] }
+    },
+    "instance_param": { "type": "string", "minLength": 1 }
+  }
+}

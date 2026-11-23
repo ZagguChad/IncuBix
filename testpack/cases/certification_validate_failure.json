@@ -1,0 +1,36 @@
+{
+  "kind": "certification",
+  "destination": {
+    "name": "Phase 4 retained failure certification",
+    "url": "http://localhost/certification-validate-failure",
+    "platform_key": "discourse",
+    "surface": "topic",
+    "category": "developer",
+    "audience_tags": ["local-test"],
+    "connector_key": "discourse",
+    "rules": {
+      "self_promo_allowed": true,
+      "link_policy": "allowed",
+      "disclosure_required": false,
+      "automation_allowed": true,
+      "content_types": ["text"],
+      "spec": {"title_max_chars": 255, "body_max_chars": 5, "links_allowed": true}
+    }
+  },
+  "expect": {
+    "http_status": 202,
+    "destination_http_status": 201,
+    "result": {
+      "status": "failed",
+      "error": {
+        "code": "PLATFORM_UNAVAILABLE",
+        "details": {"cleanup_confirmed": false}
+      }
+    },
+    "certification_record": {
+      "status": "failed",
+      "cleanup_confirmed": false,
+      "steps": [{"name": "validate", "status": "failed", "error_code": "DEST_SPEC_VIOLATION"}]
+    }
+  }
+}

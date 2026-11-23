@@ -1,0 +1,10 @@
+{
+  "kind": "connector",
+  "connector_key": "assisted",
+  "method": "build_assist_pack",
+  "body": {
+    "rendition": {"title": "Review this post", "body": "A human will publish after reviewing the rules.", "media": []},
+    "destination": {"url": "https://community.example/submit"}
+  },
+  "expect": {"http_status": 200, "response": {"checklist": ["Publish manually; this connector does not post on your behalf."]}}
+}

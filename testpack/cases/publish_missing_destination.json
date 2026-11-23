@@ -1,0 +1,11 @@
+{
+  "kind": "publish",
+  "body": {
+    "destination_id": "00000000-0000-0000-0000-000000000000",
+    "rendition": {"title": "Expected failure case", "body": "The destination ID is intentionally absent."}
+  },
+  "expect": {
+    "http_status": 404,
+    "response": {"error": {"code": "DESTINATION_NOT_FOUND"}}
+  }
+}

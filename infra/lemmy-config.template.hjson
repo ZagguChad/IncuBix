@@ -1,0 +1,16 @@
+{
+  database: {
+    connection: "__LEMMY_DATABASE_URL__"
+    pool_size: 5
+  }
+  hostname: "localhost"
+  bind: "0.0.0.0"
+  port: 8536
+  tls_enabled: false
+  federation: { concurrent_sends_per_instance: 1 }
+  pictrs: {
+    url: "http://pictrs:8080/"
+    api_key: "__LEMMY_PICTRS_KEY__"
+  }
+  json_logging: true
+}

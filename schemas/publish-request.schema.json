@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://incubrix.local/schemas/publish-request.schema.json",
+  "title": "IncuBrix Publish Request",
+  "description": "Proposed management API request. The Idempotency-Key is an HTTP header and is not part of this body.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["destination_id", "rendition"],
+  "properties": {
+    "destination_id": { "type": "string", "format": "uuid" },
+    "rendition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["body"],
+      "properties": {
+        "title": { "type": ["string", "null"], "maxLength": 1000 },
+        "body": { "type": "string", "minLength": 1, "maxLength": 100000 },
+        "canonical_url": { "type": ["string", "null"], "format": "uri" },
+        "media": {
+          "type": "array",
+          "maxItems": 25,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["url", "media_type"],
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "media_type": { "enum": ["image", "video", "audio"] },
+              "alt_text": { "type": ["string", "null"], "maxLength": 2000 }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 30 }
+        },
+        "is_promotional": { "type": "boolean", "default": false },
+        "ai_generated": { "type": "boolean", "default": false },
+        "ai_disclosure": { "type": ["string", "null"], "maxLength": 1000 },
+        "metadata": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "dry_run": { "type": "boolean", "default": false }
+  }
+}
