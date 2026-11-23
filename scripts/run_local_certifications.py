@@ -55,6 +55,19 @@ def main() -> int:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     record = {"recorded_at": datetime.now(UTC).isoformat(), "mode": "local_or_approved_sandbox", "results": results}
     (OUTPUT / "local-core-certifications.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    for result in results:
+        connector_record = {
+            "test_name": "Core connector certification lifecycle",
+            "connector": result["connector"],
+            "timestamp": record["recorded_at"],
+            "command": "python scripts/run_local_certifications.py",
+            "result": result["job"]["status"],
+            "output": result,
+            "evidence_file_path": f"evidence/local/certifications/{result['connector']}-certification.json",
+        }
+        (OUTPUT / f"{result['connector']}-certification.json").write_text(
+            json.dumps(connector_record, indent=2) + "\n", encoding="utf-8"
+        )
     print(json.dumps({"runs": len(results), "succeeded": sum(item["job"]["status"] == "succeeded" for item in results)}, indent=2))
     return 0 if all(item["job"]["status"] == "succeeded" for item in results) else 1
 
