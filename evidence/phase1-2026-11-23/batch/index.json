@@ -1,0 +1,12 @@
+[
+  {
+    "input_file": "validate_supported_text.json",
+    "result_file": "validate_supported_text.result.json",
+    "http_status": 200,
+    "job_status": null,
+    "error_code": null,
+    "outcome": "passed",
+    "passed": true,
+    "run_id": "phase1-2026-11-23"
+  }
+]

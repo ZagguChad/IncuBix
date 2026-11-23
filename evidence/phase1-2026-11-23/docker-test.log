@@ -1,0 +1,77 @@
+ Image incubix-test Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 491B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 747B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [runtime 1/7] FROM docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+#5 resolve docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 729.51kB 0.1s done
+#6 DONE 0.1s
+
+#7 [runtime 6/7] RUN pip install --no-cache-dir --no-deps .
+#7 CACHED
+
+#8 [test 1/6] COPY requirements-test.lock ./
+#8 CACHED
+
+#9 [test 3/6] COPY tests ./tests
+#9 CACHED
+
+#10 [runtime 2/7] WORKDIR /app
+#10 CACHED
+
+#11 [runtime 3/7] COPY pyproject.toml requirements.lock ./
+#11 CACHED
+
+#12 [runtime 7/7] RUN useradd --create-home --uid 10001 appuser && mkdir -p /app/data && chown -R appuser:appuser /app
+#12 CACHED
+
+#13 [runtime 4/7] RUN pip install --no-cache-dir -r requirements.lock
+#13 CACHED
+
+#14 [test 2/6] RUN pip install --no-cache-dir -r requirements-test.lock
+#14 CACHED
+
+#15 [runtime 5/7] COPY incubrix ./incubrix
+#15 CACHED
+
+#16 [test 4/6] COPY schemas ./schemas
+#16 CACHED
+
+#17 [test 5/6] COPY infra ./infra
+#17 DONE 0.0s
+
+#18 [test 6/6] COPY testpack ./testpack
+#18 DONE 0.0s
+
+#19 exporting to image
+#19 exporting layers 0.1s done
+#19 exporting manifest sha256:a07e4c1fd861ec0822c590eb5a374296dfea240d728129cbeb6b231dc2c31693 0.0s done
+#19 exporting config sha256:c49a91b7092a9efc8980c82c502fd10c13852e7130776a86a2fec022566adc90 0.0s done
+#19 exporting attestation manifest sha256:f2492f51acda9469e271f029a42cb92b0ade6e1049530bb6ff31f537474c303e 0.0s done
+#19 exporting manifest list sha256:35f14958fbe318b291d74c83b3497357dfedd007d2592b4d7afb291880875e08 0.0s done
+#19 naming to docker.io/library/incubix-test:latest done
+#19 unpacking to docker.io/library/incubix-test:latest 0.0s done
+#19 DONE 0.2s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ Image incubix-test Built 
+ Container incubix-test-run-0476acd67822 Creating 
+ Container incubix-test-run-0476acd67822 Created 
+...............................................                          [100%]
+47 passed in 10.20s

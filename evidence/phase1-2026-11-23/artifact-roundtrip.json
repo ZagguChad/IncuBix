@@ -1,0 +1,8 @@
+{
+  "captured_at": "2026-11-23T17:28:09.5846828Z",
+  "artifact_id": "d85ad843-55aa-54af-92b4-dd593c9a5f24",
+  "size_bytes": 15959,
+  "download_status": 200,
+  "download_bytes": 15959,
+  "manifest_uri": "s3://incubrix-artifacts/manifests/artifacts/d85ad843-55aa-54af-92b4-dd593c9a5f24.json"
+}

@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-11-23T17:28:07.4776869Z",
+  "api_ready": {
+    "status": "ready",
+    "simulation_mode": true
+  },
+  "api_health": {
+    "status": "ok"
+  },
+  "mock_health": {
+    "status": "ok"
+  }
+}

@@ -1,0 +1,145 @@
+ Image incubix-s3-mock Building 
+ Image incubix-mock-platforms Building 
+ Image incubrix-api:latest Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.38kB done
+#1 DONE 0.0s
+
+#2 [s3-mock internal] load build definition from Dockerfile
+#2 transferring dockerfile: 177B done
+#2 DONE 0.0s
+
+#3 [api internal] load build definition from Dockerfile
+#3 transferring dockerfile: 747B done
+#3 DONE 0.0s
+
+#4 [mock-platforms internal] load build definition from Dockerfile
+#4 transferring dockerfile: 256B done
+#4 DONE 0.0s
+
+#5 [auth] library/python:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#6 [mock-platforms internal] load metadata for docker.io/library/python:3.12-slim
+#6 DONE 1.5s
+
+#7 [api internal] load .dockerignore
+#7 transferring context: 2B done
+#7 DONE 0.0s
+
+#8 [mock-platforms internal] load .dockerignore
+#8 transferring context: 2B done
+#8 DONE 0.0s
+
+#9 [s3-mock internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [mock-platforms internal] load build context
+#10 transferring context: 29B done
+#10 DONE 0.0s
+
+#11 [mock-platforms runtime 1/7] FROM docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+#11 resolve docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b 0.0s done
+#11 DONE 0.0s
+
+#12 [mock-platforms 3/4] RUN pip install --no-cache-dir 'fastapi>=0.115,<1' 'uvicorn[standard]>=0.30,<1'
+#12 CACHED
+
+#13 [s3-mock 2/2] RUN pip install --no-cache-dir 'moto[server]==5.1.3'
+#13 CACHED
+
+#14 [mock-platforms 4/4] COPY main.py ./main.py
+#14 CACHED
+
+#15 [api internal] load build context
+#15 transferring context: 2.81kB done
+#15 DONE 0.0s
+
+#16 [api runtime 4/7] RUN pip install --no-cache-dir -r requirements.lock
+#16 CACHED
+
+#17 [api runtime 3/7] COPY pyproject.toml requirements.lock ./
+#17 CACHED
+
+#18 [api runtime 5/7] COPY incubrix ./incubrix
+#18 CACHED
+
+#19 [api runtime 2/7] WORKDIR /app
+#19 CACHED
+
+#20 [api runtime 6/7] RUN pip install --no-cache-dir --no-deps .
+#20 CACHED
+
+#21 [api runtime 7/7] RUN useradd --create-home --uid 10001 appuser && mkdir -p /app/data && chown -R appuser:appuser /app
+#21 CACHED
+
+#22 [api] exporting to image
+#22 exporting layers done
+#22 exporting manifest sha256:863aeca18a5dd131bacd9bcf0f82986f829901e107a37a80133a103eb2fdf8c6 0.0s done
+#22 exporting config sha256:e0bb8329cd5fd14ec481a7b08183fa5ce3900c28c37d141d3fb8e0995c10d22e
+#22 exporting config sha256:e0bb8329cd5fd14ec481a7b08183fa5ce3900c28c37d141d3fb8e0995c10d22e 0.0s done
+#22 exporting attestation manifest sha256:22e669f9c9e6f528cac8f684f8c92ca9c1bf1450c1dd5ad670e67b3779d6dfd6 0.0s done
+#22 exporting manifest list sha256:b48f1859e4487a3eee458c8066aca57408cda7b52abccd9e516a6ca4f73a3f9d 0.0s done
+#22 naming to docker.io/library/incubrix-api:latest
+#22 naming to docker.io/library/incubrix-api:latest done
+#22 unpacking to docker.io/library/incubrix-api:latest done
+#22 DONE 0.2s
+
+#23 [mock-platforms] exporting to image
+#23 exporting layers done
+#23 exporting manifest sha256:da0c686aa641d3b15345750555b18c7f2cf29b61174a2a9450826a4e461623e3 done
+#23 exporting config sha256:9c348b367dc68c02269a8016f3f7e5f7c9805593afdd6e5df56291a4e0a69ac7 done
+#23 exporting attestation manifest sha256:eb48229970c3668b838654f2fda5c7696e2fda793969a297e8a88ce06738863b 0.1s done
+#23 exporting manifest list sha256:778aa924ac45db623e374476c45dff10032cf00f151559cf2bff93a549e7b6e7 0.0s done
+#23 naming to docker.io/library/incubix-mock-platforms:latest done
+#23 unpacking to docker.io/library/incubix-mock-platforms:latest 0.0s done
+#23 DONE 0.2s
+
+#24 [s3-mock] exporting to image
+#24 exporting layers done
+#24 exporting manifest sha256:c9456ac27d8bbeae6e058a85658c3a2f2a257e82ab03fb354d2a2e7c9910e222 done
+#24 exporting config sha256:2d3a17294604bbc4d95d0e2124aae2585f40b918d5aa9de8f23f026c3fa70d0c 0.0s done
+#24 exporting attestation manifest sha256:dfae3c88d9d285bfa7e7925bb96e70fd2b01692481c204038d6da3c753c9e19f 0.0s done
+#24 exporting manifest list sha256:46586b5efd56dcd667c7026bd05e2a67435a2119ccabfa5ee8123b239519c053 0.0s done
+#24 naming to docker.io/library/incubix-s3-mock:latest done
+#24 unpacking to docker.io/library/incubix-s3-mock:latest 0.0s done
+#24 DONE 0.2s
+
+#25 [mock-platforms] resolving provenance for metadata file
+#25 DONE 0.0s
+
+#26 [s3-mock] resolving provenance for metadata file
+#26 DONE 0.0s
+
+#27 [api] resolving provenance for metadata file
+#27 DONE 0.0s
+ Image incubix-mock-platforms Built 
+ Image incubix-s3-mock Built 
+ Image incubrix-api:latest Built 
+ Container incubix-lemmy-postgres-1 Running 
+ Container incubix-ghost-1 Running 
+ Container incubix-pictrs-1 Running 
+ Container incubix-postgres-1 Running 
+ Container incubix-mock-platforms-1 Running 
+ Container incubix-s3-mock-1 Running 
+ Container incubix-lemmy-1 Running 
+ Container incubix-ghost-db-1 Running 
+ Container incubix-api-1 Recreate 
+ Container incubix-api-1 Recreated 
+ Container incubix-lemmy-config-1 Starting 
+ Container incubix-ghost-db-1 Waiting 
+ Container incubix-postgres-1 Waiting 
+ Container incubix-mock-platforms-1 Waiting 
+ Container incubix-s3-mock-1 Waiting 
+ Container incubix-lemmy-postgres-1 Waiting 
+ Container incubix-postgres-1 Healthy 
+ Container incubix-mock-platforms-1 Healthy 
+ Container incubix-ghost-db-1 Healthy 
+ Container incubix-s3-mock-1 Healthy 
+ Container incubix-lemmy-postgres-1 Healthy 
+ Container incubix-lemmy-config-1 Started 
+ Container incubix-lemmy-config-1 Waiting 
+ Container incubix-lemmy-config-1 Exited 
+ Container incubix-api-1 Starting 
+ Container incubix-api-1 Started 
