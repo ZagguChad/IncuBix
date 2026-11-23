@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-11-23T17:18:11.328276+00:00",
+  "dataset": "synthetic-labelled-local-v1",
+  "labelled_destinations": 12,
+  "relevant_labels": 10,
+  "top_k": 10,
+  "recommended_ids": [
+    "77c53791-f6b3-4825-b191-e3ba41cdea81",
+    "2d546bea-70d4-42bb-a94f-adfee0705467",
+    "5354b06f-2628-4fed-8287-e8987fb4a4e2",
+    "0b1e3737-7634-4858-bc05-c683e1d2626a",
+    "2550f7a5-197a-4b87-a2a5-dce38718e394",
+    "7802a4b8-5bb3-4b62-8535-fa2b8e8d00a2",
+    "bf85ac00-78c2-457d-b1a8-c9e2574752b3",
+    "c72d97f5-7cb3-4c61-abac-c2516dea0adf",
+    "afffef0a-5579-4dd3-9750-83ccd6acf18f",
+    "de20dd07-f7fd-461e-b439-20b7a11377f2"
+  ],
+  "relevant_in_top_10": 10,
+  "precision_at_10": 1.0,
+  "limitations": "Synthetic local labels validate ranking behavior only; they do not represent community relevance research."
+}
